@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace GildedRose {
-    public class ConjuredItem : MyItem {
+    public class ConjuredItem : ItemAdapter {
         public ConjuredItem(int quality, int sellIn) : base("Conjured", quality, sellIn) {
 
         }
 
         public override void UpdateItem() {
-            Quality = IsItemExpired() 
+            item.Quality = IsItemExpired() 
                 ? DecreaseQualityValue(DecreaseValue * 4) 
                 : DecreaseQualityValue(DecreaseValue * 2);
-            SellIn -= DecreaseValue;
+            item.SellIn -= DecreaseValue;
         }
     }
 }

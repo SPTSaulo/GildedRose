@@ -9,196 +9,196 @@ namespace GildedRose.Tests {
         
         [Test]
         public void CheckItemQualityDecrease() {
-            CommonItem chocolateChipsItem = new CommonItem("Chocolate Chips", 20, 90);
-            List<MyItem> items = new List<MyItem>();
-            items.Add(chocolateChipsItem);
+            CommonItem chocolateChipsItemAdapter = new CommonItem("Chocolate Chips", 20, 90);
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(chocolateChipsItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
-            MyItem chocolateChipsItemUpdated = items.First(item => item.Name == "Chocolate Chips");
-            chocolateChipsItemUpdated.Quality.Should().Be(19);
+            ItemAdapter chocolateChipsItemAdapterUpdated = items.First(itemAdapter => itemAdapter.item.Name == "Chocolate Chips");
+            chocolateChipsItemAdapterUpdated.item.Quality.Should().Be(19);
         }
 
         [Test]
         public void CheckItemQualityDecreaseTwiceFast() {
-            CommonItem scannerItem = new CommonItem("Scanner", 50, -1);
-            List<MyItem> items = new List<MyItem>();
-            items.Add(scannerItem);
+            CommonItem scannerItemAdapter = new CommonItem("Scanner", 50, -1);
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(scannerItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
 
-            MyItem agedBrieItemUpdated = items.First(item => item.Name == "Scanner");
-            agedBrieItemUpdated.Quality.Should().Be(48);
+            ItemAdapter agedBrieItemAdapterUpdated = items.First(itemAdapter => itemAdapter.item.Name == "Scanner");
+            agedBrieItemAdapterUpdated.item.Quality.Should().Be(48);
         }
 
         [Test]
         public void CheckItemSellInDecrease() {
-            CommonItem chairItem = new CommonItem("Chair", 40, 10);
-            List<MyItem> items = new List<MyItem>();
-            items.Add(chairItem);
+            CommonItem chairItemAdapter = new CommonItem("Chair", 40, 10);
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(chairItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
 
-            MyItem chairItemUpdated = items.First(item => "Chair" == item.Name);
-            chairItemUpdated.SellIn.Should().Be(9);
+            ItemAdapter chairItemAdapterUpdated = items.First(itemAdapter => "Chair" == itemAdapter.item.Name);
+            chairItemAdapterUpdated.item.SellIn.Should().Be(9);
         }
 
         [Test]
         public void CheckSulfurasQualityNotDecrease() {
-            SulfurasItem sulfurasItem = new SulfurasItem();
-            List<MyItem> items = new List<MyItem>();
-            items.Add(sulfurasItem);
+            SulfurasItem sulfurasItemAdapter = new SulfurasItem();
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(sulfurasItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
 
-            MyItem sulfurasItemUdapted = items.First(item => item.Name == "Sulfuras, Hand of Ragnaros");
-            sulfurasItemUdapted.Quality.Should().Be(80);
+            ItemAdapter sulfurasItemAdapterUdapted = items.First(itemAdapter => itemAdapter.item.Name == "Sulfuras, Hand of Ragnaros");
+            sulfurasItemAdapterUdapted.item.Quality.Should().Be(80);
         }
 
         [Test]
         public void CheckSulfurasSellInNotDecrease() {
-            SulfurasItem sulfurasItem = new SulfurasItem();
-            List<MyItem> items = new List<MyItem>();
-            items.Add(sulfurasItem);
+            SulfurasItem sulfurasItemAdapter = new SulfurasItem();
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(sulfurasItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
 
-            MyItem sulfurasItemUdapted = items.First(item => item.Name == "Sulfuras, Hand of Ragnaros");
-            sulfurasItemUdapted.SellIn.Should().Be(0);
+            ItemAdapter sulfurasItemAdapterUdapted = items.First(itemAdapter => itemAdapter.item.Name == "Sulfuras, Hand of Ragnaros");
+            sulfurasItemAdapterUdapted.item.SellIn.Should().Be(0);
         }
 
         [Test]
         public void CheckItemQualityMinValue() {
-            CommonItem gameControllerItem = new CommonItem("Game Controller", 0, -2);
-            List<MyItem> items = new List<MyItem>();
-            items.Add(gameControllerItem);
+            CommonItem gameControllerItemAdapter = new CommonItem("Game Controller", 0, -2);
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(gameControllerItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
 
-            MyItem gameControllerItemUpdated = items.First(item => item.Name == "Game Controller");
-            gameControllerItemUpdated.Quality.Should().Be(0);
+            ItemAdapter gameControllerItemAdapterUpdated = items.First(itemAdapter => itemAdapter.item.Name == "Game Controller");
+            gameControllerItemAdapterUpdated.item.Quality.Should().Be(0);
         }
 
         [Test]
         public void CheckItemQualityMaxValue() {
-            AgedBrieItem agedBrieItem = new AgedBrieItem(50, -2);
-            List<MyItem> items = new List<MyItem>();
-            items.Add(agedBrieItem);
+            AgedBrieItem agedBrieItemAdapter = new AgedBrieItem(50, -2);
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(agedBrieItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
 
-            MyItem agedBrieItemUpdated = items.First(item => item.Name == "Aged Brie");
-            agedBrieItemUpdated.Quality.Should().Be(50);
+            ItemAdapter agedBrieItemAdapterUpdated = items.First(itemAdapter => itemAdapter.item.Name == "Aged Brie");
+            agedBrieItemAdapterUpdated.item.Quality.Should().Be(50);
         }
 
         [Test]
         public void CheckAgedBrieQualityIncreases() {
-            AgedBrieItem agedBrieItem = new AgedBrieItem(30,10);
-            List<MyItem> items = new List<MyItem>();
-            items.Add(agedBrieItem);
+            AgedBrieItem agedBrieItemAdapter = new AgedBrieItem(30,10);
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(agedBrieItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
 
-            MyItem agedBrieItemUpdated = items.First(item => item.Name == "Aged Brie");
-            agedBrieItemUpdated.Quality.Should().Be(31);
+            ItemAdapter agedBrieItemAdapterUpdated = items.First(itemAdapter => itemAdapter.item.Name == "Aged Brie");
+            agedBrieItemAdapterUpdated.item.Quality.Should().Be(31);
         }
 
         [Test]
         public void CheckBackstagesPassesQualityIncreasesBy1() {
-            BackstagePassesItem backstagesPassesItem = new BackstagePassesItem(10,20);
-            List<MyItem> items = new List<MyItem>();
-            items.Add(backstagesPassesItem);
+            BackstagePassesItem backstagesPassesItemAdapter = new BackstagePassesItem(10,20);
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(backstagesPassesItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
 
-            MyItem backstagesPassesItemUpdated = items.First(item => item.Name == "Backstage passes to a TAFKAL80ETC concert");
-            backstagesPassesItemUpdated.Quality.Should().Be(11);
+            ItemAdapter backstagesPassesItemAdapterUpdated = items.First(itemAdapter => itemAdapter.item.Name == "Backstage passes to a TAFKAL80ETC concert");
+            backstagesPassesItemAdapterUpdated.item.Quality.Should().Be(11);
         }
 
         [Test]
         public void CheckBackstagesPassesQualityIncreasesBy2() {
-            BackstagePassesItem backstagesPassesItem = new BackstagePassesItem(10,10);
-            List<MyItem> items = new List<MyItem>();
-            items.Add(backstagesPassesItem);
+            BackstagePassesItem backstagesPassesItemAdapter = new BackstagePassesItem(10,10);
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(backstagesPassesItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
 
-            MyItem backstagesPassesItemUpdated = items.First(item => item.Name == "Backstage passes to a TAFKAL80ETC concert");
-            backstagesPassesItemUpdated.Quality.Should().Be(12);
+            ItemAdapter backstagesPassesItemAdapterUpdated = items.First(itemAdapter => itemAdapter.item.Name == "Backstage passes to a TAFKAL80ETC concert");
+            backstagesPassesItemAdapterUpdated.item.Quality.Should().Be(12);
         }
 
         [Test]
         public void CheckBackstagesPassesQualityIncreasesBy3() {
-            BackstagePassesItem backstagesPassesItem = new BackstagePassesItem(10,3);
-            List<MyItem> items = new List<MyItem>();
-            items.Add(backstagesPassesItem);
+            BackstagePassesItem backstagesPassesItemAdapter = new BackstagePassesItem(10,3);
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(backstagesPassesItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
 
-            MyItem backstagesPassesItemUpdated = items.First(item => item.Name == "Backstage passes to a TAFKAL80ETC concert");
-            backstagesPassesItemUpdated.Quality.Should().Be(13);
+            ItemAdapter backstagesPassesItemAdapterUpdated = items.First(itemAdapter => itemAdapter.item.Name == "Backstage passes to a TAFKAL80ETC concert");
+            backstagesPassesItemAdapterUpdated.item.Quality.Should().Be(13);
         }
 
         [Test]
         public void CheckBackstagesPassesLosesQuality() {
-            BackstagePassesItem backstagesPassesItem = new BackstagePassesItem(10,-1);
-            List<MyItem> items = new List<MyItem>();
-            items.Add(backstagesPassesItem);
+            BackstagePassesItem backstagesPassesItemAdapter = new BackstagePassesItem(10,-1);
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(backstagesPassesItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
 
-            MyItem backstagesPassesItemUpdated = items.First(item => item.Name == "Backstage passes to a TAFKAL80ETC concert");
-            backstagesPassesItemUpdated.Quality.Should().Be(0);
+            ItemAdapter backstagesPassesItemAdapterUpdated = items.First(itemAdapter => itemAdapter.item.Name == "Backstage passes to a TAFKAL80ETC concert");
+            backstagesPassesItemAdapterUpdated.item.Quality.Should().Be(0);
         }
 
         [Test]
         public void CheckConjuredLosesQuality() {
-            ConjuredItem conjuredItem = new ConjuredItem(30, 20);
-            List<MyItem> items = new List<MyItem>();
-            items.Add(conjuredItem);
+            ConjuredItem conjuredItemAdapter = new ConjuredItem(30, 20);
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(conjuredItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
 
-            MyItem conjuredItemUpdated = items.First(item => item.Name == "Conjured");
-            conjuredItemUpdated.Quality.Should().Be(28);
+            ItemAdapter conjuredItemAdapterUpdated = items.First(itemAdapter => itemAdapter.item.Name == "Conjured");
+            conjuredItemAdapterUpdated.item.Quality.Should().Be(28);
         }
 
         [Test]
         public void CheckConjuredLoseQualityTwiceFast() {
-            ConjuredItem conjuredItem = new ConjuredItem(30, -1);
-            List<MyItem> items = new List<MyItem>();
-            items.Add(conjuredItem);
+            ConjuredItem conjuredItemAdapter = new ConjuredItem(30, -1);
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(conjuredItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
 
-            MyItem conjuredItemUpdated = items.First(item => item.Name == "Conjured");
-            conjuredItemUpdated.Quality.Should().Be(26);
+            ItemAdapter conjuredItemAdapterUpdated = items.First(itemAdapter => itemAdapter.item.Name == "Conjured");
+            conjuredItemAdapterUpdated.item.Quality.Should().Be(26);
         }
 
         [Test]
         public void CheckConjuredSellInDecrease() {
-            ConjuredItem conjuredItem = new ConjuredItem(30, -1);
-            List<MyItem> items = new List<MyItem>();
-            items.Add(conjuredItem);
+            ConjuredItem conjuredItemAdapter = new ConjuredItem(30, -1);
+            List<ItemAdapter> items = new List<ItemAdapter>();
+            items.Add(conjuredItemAdapter);
             GildedRose gildedRose = new GildedRose(items);
 
             gildedRose.UpdateItemProperties();
 
-            MyItem conjuredItemUpdated = items.First(item => item.Name == "Conjured");
-            conjuredItemUpdated.SellIn.Should().Be(-2);
+            ItemAdapter conjuredItemAdapterUpdated = items.First(itemAdapter => itemAdapter.item.Name == "Conjured");
+            conjuredItemAdapterUpdated.item.SellIn.Should().Be(-2);
         }
     }
 }

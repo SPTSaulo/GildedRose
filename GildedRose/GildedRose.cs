@@ -9,9 +9,9 @@ using System.Xml;
 
 namespace GildedRose {
     public class GildedRose{
-        IList<MyItem> Items;
+        IList<ItemAdapter> Items;
 
-        public GildedRose(IList<MyItem> items) {
+        public GildedRose(IList<ItemAdapter> items) {
             this.Items = items;
         }
 

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace GildedRose {
-    public class CommonItem : MyItem {
+    public class CommonItem : ItemAdapter {
         public CommonItem(string name, int quality, int sellIn) : base(name, quality, sellIn) {
         }
 
         public override void UpdateItem() {
-            Quality = IsItemExpired()
+            item.Quality = IsItemExpired()
                 ? DecreaseQualityValue(DecreaseValue * 2)
                 : DecreaseQualityValue(DecreaseValue);
-            SellIn -= DecreaseValue;
+            item.SellIn -= DecreaseValue;
         }
 
     }
